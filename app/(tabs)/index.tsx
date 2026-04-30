@@ -46,7 +46,7 @@ export default function IndexScreen(){
 const styles=StyleSheet.create({
  container:{
     flex:1,//Ocupa toda a tela
-    backgroundColor:"#458514",
+    backgroundColor:"#253C1F",
     justifyContent:"center",//Centraliza verticalmente
     alignItems:"center",//Centraliza horizontalmente
     padding:24

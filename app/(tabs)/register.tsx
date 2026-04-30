@@ -57,6 +57,13 @@ export default function Register(){
             keyboardType="email-address"
             autoCapitalize="none"
             />
+            <TextInput
+            style={style.input}
+            placeholder="Digite sua senha"
+            value={senha}
+            onChangeText={setSenha}
+
+            />
 
         </View>
     )
@@ -65,10 +72,16 @@ export default function Register(){
 
 const style={
     container:{
-
+        flex:1,//Ocupa toda a tela
+        backgroundColor:"#253C1F",
+        justifyContent:"center",//Centraliza verticalmente
+        alignItems:"center",//Centraliza horizontalmente
+        padding:24
     },
     input:{
-
+        width:350,
+        padding:4,
+        backgroundColor:"#5DB138"
     },
     title:{
         

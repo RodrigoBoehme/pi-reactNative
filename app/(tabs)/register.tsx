@@ -12,7 +12,7 @@ import {router} from "expo-router"
 import { Auth } from "firebase/auth"
 
 //Botao
-import CustomButon from "../components/ui/Button"
+import CustomButton from "../components/ui/Button"
 import { auth } from "@/config/firebase"
 import { createErrorHandler } from "expo/build/errors/ExpoErrorManager"
 //Componente principal da tela de cadastro
@@ -46,31 +46,32 @@ export default function Register(){
     }
     //Interface da tela
     return(
-        <View style={style.container}>
-            <Text style={style.title}>Cadastro</Text>
+        <View style={styles.container}>
+            <Text style={styles.title}>Cadastro</Text>
             {/* Campo email */}
             <TextInput
-            style= {style.input}
+            style= {styles.input}
             placeholder="Digite seu email"
             value={email}
             onChangeText={setEmail}//Atualoza o estado ao digitar
             keyboardType="email-address"
             autoCapitalize="none"
             />
-            <TextInput
-            style={style.input}
-            placeholder="Digite sua senha"
-            value={senha}
-            onChangeText={setSenha}
+            {/* botão de cadastro */}
+            <CustomButton title="Cadastrar" onPress={cadastrar}/>
+            {/* Botao para voltar paao login */}
+            <CustomButton title="Ja tenho conta" onPress={()=>router.push("/login")}/>
+            
 
-            />
+            
+
 
         </View>
     )
 
 }
 
-const style={
+const styles=StyleSheet.create({
     container:{
         flex:1,//Ocupa toda a tela
         backgroundColor:"#253C1F",
@@ -80,10 +81,18 @@ const style={
     },
     input:{
         width:350,
-        padding:4,
-        backgroundColor:"#5DB138"
+        height:40,
+        padding:15,
+        backgroundColor:"#5DB138",
+        borderRadius:20,
+        margin:5,
+        fontWeight:"700",
+        color:"#f2f1f2"
     },
     title:{
-        
+        padding:3,
+        fontWeight:700,
+        fontSize:30,
+        color:'#f9f2f2'
     }
-}
+})

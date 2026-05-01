@@ -12,7 +12,7 @@ type Props={
 }
 
 //Exporta o componente para ser usado
-export default function CustomButon({title,onPress}:Props){
+export default function CustomButton({title,onPress}:Props){
     //Retorna o que será exibio na tela
     return(
         <Pressable style={styles.button} onPress={onPress}> 
@@ -24,10 +24,10 @@ export default function CustomButon({title,onPress}:Props){
 //Estilo do botão
 const styles=StyleSheet.create({
     button:{
-        width:240,//ocuta toda a largura disponivel
+        width:160,//ocuta toda a largura disponivel
         backgroundColor:"#5DB138",//Azulinho
-        paddingVertical:14,//Espaçamento interno vertical altura do botão
-        borderRadius:12,//Vcs sabem né, aredondar as bordas
+        paddingVertical:5,//Espaçamento interno vertical altura do botão
+        borderRadius:20,//Vcs sabem né, aredondar as bordas
         alignItems:"center",//Centraliza o texto horizontalmente
         marginTop:12
     },

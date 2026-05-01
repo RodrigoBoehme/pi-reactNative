@@ -16,7 +16,7 @@ export default function IndexScreen(){
         <View style={styles.container}>
             {/* {Imagem do logo} */}
             <Image 
-            source={require("../../assets/images/tipi.jpeg")}
+            source={require("../../assets/images/logo2.jpeg")}
             style={styles.image}
             resizeMode="contain" //Mantém a proporção sem cortar a imagem
             />

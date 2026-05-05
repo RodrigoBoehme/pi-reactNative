@@ -22,7 +22,7 @@ export default function Login(){
             return
         }
         try{
-            const result=await loginUser({email,senha})
+            // const result=await loginUser({email,senha})
         }catch(e){
 
         }
@@ -49,7 +49,7 @@ export default function Login(){
             onChangeText={setSenha}
             value={senha}
             />
-            <CustomButton title="Login" onPress={handleLogin}/>
+            <CustomButton title="Login" onPress={()=>router.push("/mapa")}/>
             
 
         </View>

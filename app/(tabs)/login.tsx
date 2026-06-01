@@ -60,7 +60,8 @@ export default function Login(){
 const styles=StyleSheet.create({
     container:{
         flex:1,//Ocupa toda a tela
-        backgroundColor:"#253C1F",
+        // backgroundColor:"#253C1F",
+        backgroundColor:"#0f0f0f",
         justifyContent:"center",//Centraliza verticalmente
         alignItems:"center",//Centraliza horizontalmente
         padding:24

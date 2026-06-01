@@ -74,7 +74,8 @@ export default function Register(){
 const styles=StyleSheet.create({
     container:{
         flex:1,//Ocupa toda a tela
-        backgroundColor:"#253C1F",
+        // backgroundColor:"#253C1F",
+        backgroundColor:"#050505",
         justifyContent:"center",//Centraliza verticalmente
         alignItems:"center",//Centraliza horizontalmente
         padding:24

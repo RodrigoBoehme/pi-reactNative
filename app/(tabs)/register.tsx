@@ -13,7 +13,7 @@ import { Auth } from "firebase/auth"
 
 //Botao
 import CustomButton from "../components/ui/Button"
-import { auth } from "@/config/firebase"
+// import { auth } from "@/config/firebase"
 import { createErrorHandler } from "expo/build/errors/ExpoErrorManager"
 //Componente principal da tela de cadastro
 export default function Register(){
@@ -33,7 +33,7 @@ export default function Register(){
         }
         try{
             //Cria o usuario no Firebase Authentication
-            await createUserWithEmailAndPassword(auth,email.trim(),senha)
+            // await createUserWithEmailAndPassword(auth=0,email.trim(),senha)
             //Mensagen de sucesso
             Alert.alert("Sucesso, conta criada com seucesso!")
             

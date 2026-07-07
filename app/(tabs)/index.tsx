@@ -1,72 +1,112 @@
-//Importa componentes visuais
-//View -> estrutura (tipo uma div)
-//Text -> texto
-//Stylesheet - estilos
-//Image -> exibir imagens
-import { View, Text,StyleSheet,Image } from "react-native";
-//Importa o sistema de navegação do Expo Router
-//router -> permite navegar entre telas
+import { View, Text, StyleSheet, Image } from "react-native";
 import { router } from "expo-router";
-//Importa o botão que criamos
+import { LinearGradient } from "expo-linear-gradient";
 import CustomButon from "../components/ui/Button";
 
-export default function IndexScreen(){
-    return(
-        //Container principal
-        <View style={styles.container}>
-            {/* {Imagem do logo} */}
-            <Image 
-            source={require("../../assets/images/logo2.jpeg")}
-            style={styles.image}
-            resizeMode="contain" //Mantém a proporção sem cortar a imagem
-            />
-            {/* {Titulo principal} */}
-            <Text style={styles.title}>InformaTechInforma</Text>
-            {/* Subtitulo explixando o app  */}
-            <Text style={styles.subtitle}>
-                Este app serve para informar algo a alguem, esse quem ninguem sabe alguem maklçsdmasçlfas.
-            </Text>
-            {/* Botão para ir para tela de Login */}
-            <CustomButon
-            title="Ir para Login"
-            onPress={()=>router.push('/login')}
-            //router.push -> empilha uma nova tela
-            />
-            {/* Botão para ir a tela de Cadastro */}
-            <CustomButon
-            title="Ir para Cadastro"
-            onPress={()=>router.push("/register")}
-            />
+export default function IndexScreen() {
+  return (
+    <LinearGradient
+      colors={["#050505", "#0E1F0C", "#253C1F"]}
+      style={styles.container}
+    >
+      {/* Card principal */}
+      <View style={styles.card}>
+        <Image
+          source={require("../../assets/images/logo1.png")}
+          style={styles.image}
+          resizeMode="contain"
+        />
 
+        <Text style={styles.title}>InformaTech</Text>
 
+        <Text style={styles.subtitle}>
+          Compartilhe conhecimento, conecte pessoas e mantenha todos informados
+          em um só lugar.
+        </Text>
+
+        <View style={styles.buttons}>
+          <CustomButon
+            title="Entrar"
+            onPress={() => router.push("/login")}
+          />
+
+          <CustomButon
+            title="Criar Conta"
+            onPress={() => router.push("/register")}
+          />
         </View>
-    )
-}
-//Estilos
-const styles=StyleSheet.create({
- container:{
-    flex:1,//Ocupa toda a tela
-    // backgroundColor:"#253C1F",
-    backgroundColor:"#000000",
-    justifyContent:"center",//Centraliza verticalmente
-    alignItems:"center",//Centraliza horizontalmente
-    padding:24
- },
- image:{
-    width:300,
-    height:300,
-    marginBottom:10
- },
- title:{
-    fontSize:28,
-    fontWeight:'700',//negrito forte
-    marginBottom:8
- },
- subtitle:{
-    fontSize:16,
-    color:"#666",
-    marginBottom:24,
-    textAlign:"center"
- }
+      </View>
 
-})
+      <Text style={styles.footer}>
+        Versão 1.0 • Desenvolvido pela equipe InformaTech
+      </Text>
+    </LinearGradient>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 25,
+  },
+
+  card: {
+    width: "100%",
+    maxWidth: 420,
+    backgroundColor: "rgba(255,255,255,0.05)",
+    borderRadius: 28,
+    padding: 30,
+    alignItems: "center",
+
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.08)",
+
+    shadowColor: "#7ED957",
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 20,
+
+    elevation: 15,
+  },
+
+  image: {
+    width: 180,
+    height: 180,
+    marginBottom: 20,
+    borderRadius: 90,
+  },
+
+  title: {
+    fontSize: 36,
+    fontWeight: "900",
+    color: "#7ED957",
+    letterSpacing: 1,
+    marginBottom: 12,
+  },
+
+  subtitle: {
+    color: "#E2E2E2",
+    fontSize: 16,
+    textAlign: "center",
+    lineHeight: 26,
+    marginBottom: 35,
+  },
+
+  buttons: {
+    width: "100%",
+    gap: 18,
+  },
+
+  footer: {
+    position: "absolute",
+    bottom: 30,
+    color: "#9E9E9E",
+    fontSize: 13,
+    letterSpacing: 0.5,
+  },
+});

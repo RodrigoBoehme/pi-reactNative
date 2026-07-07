@@ -2,14 +2,14 @@
 import {View, Text,TextInput,StyleSheet,Alert} from "react-native"
 //Importa o hook para controlar os estados
 import {useState} from "react"
-
+import TermsScreen from "./termos"
 //Função do Firebase para criar usuario com email e senha
 import { createUserWithEmailAndPassword } from "firebase/auth"
 
 //Controle de navegação entre telas
 import {router} from "expo-router"
 //Importa a autenticação configurada no Firebase
-import { Auth } from "firebase/auth"
+// import { Auth } from "firebase/auth"
 
 //Botao
 import CustomButton from "../components/ui/Button"
@@ -33,7 +33,7 @@ export default function Register(){
         }
         try{
             //Cria o usuario no Firebase Authentication
-            // await createUserWithEmailAndPassword(auth=0,email.trim(),senha)
+            // await createUserWithEmailAndPassword(auth,email.trim(),senha)
             //Mensagen de sucesso
             Alert.alert("Sucesso, conta criada com seucesso!")
             
@@ -57,6 +57,8 @@ export default function Register(){
             keyboardType="email-address"
             autoCapitalize="none"
             />
+            <CustomButton title="Termos" onPress={()=>router.push("/termos")}></CustomButton>
+
             {/* botão de cadastro */}
             <CustomButton title="Cadastrar" onPress={cadastrar}/>
             {/* Botao para voltar paao login */}

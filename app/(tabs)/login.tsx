@@ -88,7 +88,7 @@ export default function Login() {
             ]}
           >
             <LinearGradient
-              colors={["#A3E635", "#65A30D"]}
+              colors={["#35e6c6", "#35e6c6"]}
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 1 }}
               style={styles.btnGradient}
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   titleAccent: {
-    color: "#84CC16",
+    color: "#35e6c6",
   },
   subtitle: {
     color: "#9CA3AF",
@@ -195,7 +195,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     overflow: "hidden",
     marginTop: 10,
-    shadowColor: "#84CC16",
     shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.25,
     shadowRadius: 20,

@@ -49,7 +49,7 @@ export default function IndexScreen() {
             ]}
           >
             <LinearGradient
-              colors={["#A3E635", "#65A30D"]} // Verde limão vibrante para um degradê rico
+              colors={["#35e6c6", "#35e6c6"]} 
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 1 }}
               style={styles.btnGradient}
@@ -75,7 +75,7 @@ export default function IndexScreen() {
       {/* Assinatura de Design */}
       <View style={styles.footerContainer}>
         <View style={styles.footerLine} />
-        <Text style={styles.footerText}>InformaTech Pro • v1.0</Text>
+        <Text style={styles.footerText}>InformaTech</Text>
       </View>
     </View>
   );
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   titleAccent: {
-    color: "#84CC16", // Destaque na palavra Tech
+    color: "#35e6c6", // Destaque na palavra Tech
   },
   subtitle: {
     color: "#9CA3AF", // Cinza moderno neutro
@@ -163,7 +163,6 @@ const styles = StyleSheet.create({
     height: 62,
     borderRadius: 20,
     overflow: "hidden",
-    shadowColor: "#84CC16",
     shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.3,
     shadowRadius: 20,

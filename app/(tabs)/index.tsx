@@ -1,38 +1,76 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, Dimensions, Pressable } from "react-native";
+import { View, Text, StyleSheet, Image, Pressable, useWindowDimensions, SafeAreaView } from "react-native";
 import { router } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 
-const { width, height } = Dimensions.get("window");
-
 export default function IndexScreen() {
+  // Pega a largura e altura em tempo real para manter o app responsivo
+  const { width, height } = useWindowDimensions();
+
+  // Condicionais para adaptar estilos inline se necessário
+  const isSmall = width < 360;
+
+  // Definição dinâmica do GAP baseada na altura da tela (Sugestão 6)
+  const dynamicGap = height < 650 ? 22 : height < 800 ? 32 : 48;
+
   return (
-    <View style={styles.container}>
-      {/* Luzes de fundo gradientes (Estilo Spotify/Apple) */}
-      <View style={styles.glowTop} />
-      <View style={styles.glowBottom} />
+    <SafeAreaView style={[styles.container,
+    {
+      width: width,
+      height: height
+    }]}>
+   
+      <View style={[styles.glowTop, { top: -height * 0.2, right: -width * 0.2, width: width * 1.3, height: width * 1.3, borderRadius: (width * 1.3) / 2 }]} />
+      <View style={[styles.glowBottom, { bottom: -height * 0.3, left: -width * 0.3, width: width * 1.4, height: width * 1.4, borderRadius: (width * 1.4) / 2 }]} />
 
       {/* Container de Conteúdo Principal */}
-      <View style={styles.mainContent}>
+      <View style={[styles.mainContent, { gap: dynamicGap }]}>
         
         {/* Bloco de Branding Isolado e Moderno */}
         <View style={styles.brandContainer}>
           <LinearGradient
             colors={["rgba(255, 255, 255, 0.08)", "rgba(255, 255, 255, 0.01)"]}
-            style={styles.logoWrapper}
+            style={[
+              styles.logoWrapper,
+              {
+                // Tamanho responsivo do wrapper do logo (Sugestão 3)
+                width: width < 360 ? 75 : width > 768 ? 110 : 90,
+                height: width < 360 ? 75 : width > 768 ? 110 : 90,
+              }
+            ]}
           >
             <Image
               source={require("../../assets/images/logo1.png")}
-              style={styles.logo}
+              style={[
+                styles.logo,
+                {
+                  // Tamanho responsivo da imagem do logo (Sugestão 3)
+                  width: width < 360 ? 42 : width > 768 ? 60 : 50,
+                  height: width < 360 ? 42 : width > 768 ? 60 : 50,
+                }
+              ]}
               resizeMode="contain"
             />
           </LinearGradient>
           
-          <Text style={styles.title}>
+          <Text style={[
+            styles.title,
+            {
+              // Tamanho responsivo do título (Sugestão 4)
+              fontSize: width < 340 ? 28 : width < 390 ? 32 : width < 768 ? 38 : 48
+            }
+          ]}>
             Informa<Text style={styles.titleAccent}>Tech</Text>
           </Text>
           
-          <Text style={styles.subtitle}>
+          <Text style={[
+            styles.subtitle,
+            {
+              // Fonte e espaçamento responsivos do subtítulo (Sugestão 5)
+              fontSize: width < 360 ? 14 : 16,
+              lineHeight: width < 360 ? 20 : 24,
+            }
+          ]}>
             Conectando mentes, compartilhando futuro. A sua plataforma definitiva de informação e tecnologia.
           </Text>
         </View>
@@ -45,6 +83,7 @@ export default function IndexScreen() {
             onPress={() => router.push("/login")}
             style={({ pressed }) => [
               styles.btnPrimaryContainer,
+              { height: width < 360 ? 52 : 58 }, // Altura responsiva (Sugestão 7)
               pressed && styles.btnPressed
             ]}
           >
@@ -54,19 +93,30 @@ export default function IndexScreen() {
               end={{ x: 1, y: 1 }}
               style={styles.btnGradient}
             >
-              <Text style={styles.btnPrimaryText}>Acessar o Login</Text>
+              <Text style={[
+                styles.btnPrimaryText,
+                { fontSize: width < 360 ? 15 : 16 } // Texto responsivo (Sugestão 7)
+              ]}>
+                Acessar o Login
+              </Text>
             </LinearGradient>
           </Pressable>
 
-          {/* Botão Criar Conta - Visual Minimalista Invisível com Borda Fina */}
+          {/* Botão Criar Conta */}
           <Pressable 
             onPress={() => router.push("/register")}
             style={({ pressed }) => [
               styles.btnSecondary,
+              { height: width < 360 ? 52 : 58 }, // Altura responsiva (Sugestão 7)
               pressed && styles.btnPressed
             ]}
           >
-            <Text style={styles.btnSecondaryText}>Criar uma nova conta</Text>
+            <Text style={[
+              styles.btnSecondaryText,
+              { fontSize: width < 360 ? 15 : 16 }
+            ]}>
+              Criar uma nova conta
+            </Text>
           </Pressable>
 
         </View>
@@ -77,52 +127,39 @@ export default function IndexScreen() {
         <View style={styles.footerLine} />
         <Text style={styles.footerText}>InformaTech</Text>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
+// Para que as propriedades que usam 'width' e 'height' funcionem dinamicamente,
+// algumas foram movidas direto para o estilo inline no código acima.
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#030712", // Preto azulado ultra profundo (estilo interfaces topo de linha)
+    backgroundColor: "#030712", 
     alignItems: "center",
     justifyContent: "space-between",
-    paddingHorizontal: 32,
-    paddingTop: height * 0.1,
-    paddingBottom: 40,
+    paddingHorizontal: 24, // Ajustado conforme base da sugestão
+    paddingVertical: 20,
   },
-  // Efeitos de Iluminação de Fundo (Aura/Glow)
   glowTop: {
     position: "absolute",
-    top: -height * 0.2,
-    right: -width * 0.2,
-    width: width * 1.3,
-    height: width * 1.3,
-    borderRadius: (width * 1.3) / 2,
-    backgroundColor: "rgba(132, 204, 22, 0.12)", // Glow verde sutil no topo
+    backgroundColor: "rgba(132, 204, 22, 0.12)", 
   },
   glowBottom: {
     position: "absolute",
-    bottom: -height * 0.3,
-    left: -width * 0.3,
-    width: width * 1.4,
-    height: width * 1.4,
-    borderRadius: (width * 1.4) / 2,
-    backgroundColor: "rgba(30, 41, 59, 0.5)", // Profundidade azulada na base
+    backgroundColor: "rgba(30, 41, 59, 0.5)", 
   },
   mainContent: {
     flex: 1,
     width: "100%",
-    maxWidth: 380,
+    maxWidth: 500, // Expandido para tablets (Sugestão 8)
     justifyContent: "center",
-    gap: 64, // Muito espaçamento para o design respirar
   },
   brandContainer: {
     alignItems: "center",
   },
   logoWrapper: {
-    width: 100,
-    height: 100,
     borderRadius: 32,
     justifyContent: "center",
     alignItems: "center",
@@ -130,12 +167,8 @@ const styles = StyleSheet.create({
     borderColor: "rgba(255, 255, 255, 0.15)",
     marginBottom: 32,
   },
-  logo: {
-    width: 120,
-    height: 120,
-  },
+  logo: {},
   title: {
-    fontSize: 42,
     fontWeight: "900",
     color: "#FFFFFF",
     letterSpacing: -1.5,
@@ -143,24 +176,20 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   titleAccent: {
-    color: "#35e6c6", // Destaque na palavra Tech
+    color: "#35e6c6", 
   },
   subtitle: {
-    color: "#9CA3AF", // Cinza moderno neutro
-    fontSize: 16,
+    color: "#9CA3AF", 
     textAlign: "center",
-    lineHeight: 26,
-    fontWeight: "400",
+    maxWidth: 340, // Limitado para não quebrar feio (Sugestão 5)
     paddingHorizontal: 12,
   },
   actionGroup: {
     width: "100%",
     gap: 16,
   },
-  // Estilização dos Botões
   btnPrimaryContainer: {
     width: "100%",
-    height: 62,
     borderRadius: 20,
     overflow: "hidden",
     shadowOffset: { width: 0, height: 10 },
@@ -175,13 +204,11 @@ const styles = StyleSheet.create({
   },
   btnPrimaryText: {
     color: "#061500",
-    fontSize: 17,
     fontWeight: "700",
     letterSpacing: -0.3,
   },
   btnSecondary: {
     width: "100%",
-    height: 62,
     borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
@@ -191,19 +218,17 @@ const styles = StyleSheet.create({
   },
   btnSecondaryText: {
     color: "#E5E7EB",
-    fontSize: 16,
     fontWeight: "600",
   },
-  // Microinteração de clique
   btnPressed: {
     transform: [{ scale: 0.96 }],
     opacity: 0.85,
   },
-  // Rodapé Elegante
   footerContainer: {
     alignItems: "center",
     width: "100%",
     gap: 16,
+    marginTop: 10,
   },
   footerLine: {
     width: 40,

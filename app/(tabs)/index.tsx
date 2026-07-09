@@ -14,7 +14,7 @@ export default function IndexScreen() {
   const dynamicGap = height < 650 ? 22 : height < 800 ? 32 : 48;
 
   return (
-    <SafeAreaView style={[styles.container,
+    <View style={[styles.container,
     {
       width: width,
       height: height
@@ -127,7 +127,7 @@ export default function IndexScreen() {
         <View style={styles.footerLine} />
         <Text style={styles.footerText}>InformaTech</Text>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 

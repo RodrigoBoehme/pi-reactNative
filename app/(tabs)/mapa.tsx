@@ -1,6 +1,7 @@
 
-import { View, Text,StyleSheet,Image } from "react-native";
+import { View, Text,StyleSheet,Image, Pressable } from "react-native";
 import CustomButtom from "@/app/components/ui/Button";
+import { router } from "expo-router";
 
 export default function mapa(){
 
@@ -14,8 +15,9 @@ export default function mapa(){
             resizeMode="contain"
             />
             <Text style={styles.title}>Hell nah</Text>
-            <Text style={styles.subtitle}>nothing much</Text>
+            <Text style={styles.subtitle}></Text>
             <Text style={styles.content}>Maybe a map in the far far away future?</Text>
+            <Pressable onPress={()=>router.push("/")} style={styles.button} />
             </View>
         </View>
     )
@@ -54,6 +56,12 @@ const styles=StyleSheet.create({
     alignItems:"center",
     borderRadius:40
  },
- content:{}
+ content:{},
+ button:{
+   width:100,
+   height:30,
+   backgroundColor:"#fff",
+   borderRadius:16
+ }
 
 })

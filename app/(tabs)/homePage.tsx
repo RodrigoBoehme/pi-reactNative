@@ -11,5 +11,7 @@ export default function homePage(){
 }
 
 const styles=StyleSheet.create({
-    container:{}
+    container:{
+        backgroundColor:"f43a12"
+    }
 })
